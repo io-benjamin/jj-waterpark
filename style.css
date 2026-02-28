@@ -1,0 +1,581 @@
+/* JJ's Splash Kingdom - Water Park Website */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #00b4d8;
+  --secondary: #0077b6;
+  --accent: #ffbe0b;
+  --dark: #03045e;
+  --light: #caf0f8;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(180deg, #87ceeb 0%, #00b4d8 50%, #0077b6 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--dark);
+}
+
+/* Animated Waves Background */
+.waves-bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.3' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+  background-size: 50% 100px;
+  animation: wave 15s linear infinite;
+}
+
+.wave1 { opacity: 0.5; animation-delay: 0s; bottom: 0; }
+.wave2 { opacity: 0.3; animation-delay: -5s; bottom: 10px; }
+.wave3 { opacity: 0.2; animation-delay: -10s; bottom: 20px; }
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Floating Bubbles */
+.bubbles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-delay: 0s; animation-duration: 8s; }
+.bubble:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 1s; animation-duration: 12s; }
+.bubble:nth-child(3) { left: 35%; width: 60px; height: 60px; animation-delay: 2s; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 50%; width: 30px; height: 30px; animation-delay: 3s; animation-duration: 14s; }
+.bubble:nth-child(5) { left: 65%; width: 25px; height: 25px; animation-delay: 4s; animation-duration: 9s; }
+.bubble:nth-child(6) { left: 75%; width: 50px; height: 50px; animation-delay: 5s; animation-duration: 11s; }
+.bubble:nth-child(7) { left: 85%; width: 35px; height: 35px; animation-delay: 6s; animation-duration: 13s; }
+.bubble:nth-child(8) { left: 95%; width: 20px; height: 20px; animation-delay: 7s; animation-duration: 8s; }
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.logo-text {
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  color: var(--secondary);
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 700;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav a:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  margin-bottom: 1.5rem;
+}
+
+.title-line {
+  display: block;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.title-main {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(3rem, 10vw, 6rem);
+  color: var(--accent);
+  text-shadow: 4px 4px 0 var(--dark), 6px 6px 0 rgba(0,0,0,0.2);
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.title-sub {
+  display: block;
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.hero-desc {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--dark);
+  box-shadow: 0 4px 15px rgba(255, 190, 11, 0.4);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 190, 11, 0.5);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--secondary);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05) translateY(-3px);
+}
+
+.hero-mascot {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  font-size: 8rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-size: 3rem;
+  color: var(--secondary);
+}
+
+.stat-label {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Section Title */
+.section-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  color: white;
+  text-shadow: 3px 3px 0 var(--dark);
+  margin-bottom: 3rem;
+}
+
+/* Rides Section */
+.rides {
+  padding: 5rem 2rem;
+}
+
+.rides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ride-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.ride-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--accent);
+}
+
+.ride-card:hover {
+  transform: translateY(-10px) rotate(1deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ride-emoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.ride-card h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.ride-card p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.ride-tag {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+/* Attractions */
+.attractions {
+  padding: 5rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.attractions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.attraction {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.attraction:hover {
+  transform: scale(1.02);
+}
+
+.attraction-icon {
+  font-size: 2.5rem;
+}
+
+.attraction h4 {
+  font-weight: 900;
+  color: var(--dark);
+}
+
+.attraction p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Tickets */
+.tickets {
+  padding: 5rem 2rem;
+}
+
+.tickets-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ticket-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.ticket-card:hover {
+  transform: translateY(-5px);
+}
+
+.ticket-card.featured {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+.ticket-card.featured:hover {
+  transform: scale(1.08);
+}
+
+.ticket-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.ticket-type {
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.ticket-price {
+  font-family: 'Bangers', cursive;
+  font-size: 3rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.ticket-card.featured .ticket-price {
+  color: var(--dark);
+}
+
+.ticket-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.ticket-features li {
+  padding: 0.3rem 0;
+  color: #444;
+}
+
+.btn-ticket {
+  width: 100%;
+  background: var(--secondary);
+  color: white;
+}
+
+.ticket-card.featured .btn-ticket {
+  background: var(--dark);
+}
+
+/* Footer */
+.footer {
+  background: var(--dark);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.footer-socials span {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.footer-socials span:hover {
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .nav {
+    gap: 1rem;
+  }
+
+  .nav a {
+    font-size: 0.9rem;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .hero-mascot {
+    display: none;
+  }
+
+  .stats {
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    display: none;
+  }
+
+  .title-main {
+    font-size: 2.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
