@@ -293,6 +293,183 @@ body {
   margin-bottom: 3rem;
 }
 
+/* World's Tallest Section */
+.tallest-section {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tallest-section::before {
+  content: '⭐';
+  position: absolute;
+  font-size: 1rem;
+  animation: twinkle 2s infinite;
+}
+
+.tallest-section::after {
+  content: '✨';
+  position: absolute;
+  right: 20%;
+  top: 20%;
+  font-size: 1.5rem;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.tallest-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tallest-badge {
+  display: inline-block;
+  background: gold;
+  color: #1a1a2e;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.tallest-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(3rem, 10vw, 5rem);
+  color: #ff6b6b;
+  text-shadow: 4px 4px 0 #000, 0 0 30px rgba(255, 107, 107, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.tallest-subtitle {
+  font-size: 1.5rem;
+  color: gold;
+  margin-bottom: 2rem;
+}
+
+.tallest-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tallest-stat {
+  text-align: center;
+}
+
+.big-number {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-size: 4rem;
+  color: #4ecdc4;
+  text-shadow: 3px 3px 0 #000;
+  line-height: 1;
+}
+
+.tallest-stat span:last-child {
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.tallest-desc {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tower-visual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tower-top {
+  font-size: 2rem;
+  animation: flag 1s ease-in-out infinite;
+}
+
+@keyframes flag {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.tower-body {
+  width: 30px;
+  height: 300px;
+  background: linear-gradient(180deg, 
+    #ff6b6b 0%, 
+    #ff6b6b 20%,
+    #4ecdc4 20%,
+    #4ecdc4 40%,
+    #ffe66d 40%,
+    #ffe66d 60%,
+    #a29bfe 60%,
+    #a29bfe 80%,
+    #00b894 80%,
+    #00b894 100%
+  );
+  border-radius: 5px;
+  position: relative;
+}
+
+.tower-body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  transform: translateX(-50%);
+}
+
+.tower-splash {
+  font-size: 2rem;
+  animation: splash 1s ease-in-out infinite;
+}
+
+@keyframes splash {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.height-markers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  text-align: left;
+  padding: 10px 0;
+}
+
 /* Rides Section */
 .rides {
   padding: 5rem 2rem;
